@@ -16,7 +16,7 @@ export default function ContactSection() {
     message: ''
   });
 
-  const [expandedFAQ, setExpandedFAQ] = useState(null);
+  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },

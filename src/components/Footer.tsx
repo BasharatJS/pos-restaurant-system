@@ -157,13 +157,10 @@ export default function Footer() {
                   scale: 1.05,
                   textShadow: '0 0 10px rgba(74, 222, 128, 0.8)'
                 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 animate={{
                   y: [0, -1, 0],
                   opacity: [0.9, 1, 0.9]
-                }}
-                style={{
-                  transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
                 }}
               >
                 Restaurant
