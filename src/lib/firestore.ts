@@ -55,7 +55,10 @@ export const subscribeToTables = (callback: (tables: Table[]) => void) => {
   return onSnapshot(q, (snapshot) => {
     const tables: Table[] = [];
     snapshot.forEach((doc) => {
-      tables.push({ ...doc.data(), id: doc.id } as Table);
+      const data = doc.data();
+      if (data) {
+        tables.push({ ...data, id: doc.id } as unknown as Table);
+      }
     });
     callback(tables);
   });
@@ -115,12 +118,14 @@ export const subscribeToTableOrders = (tableId: number, callback: (orders: Order
     const orders: Order[] = [];
     snapshot.forEach((doc) => {
       const data = doc.data();
-      orders.push({
-        ...data,
-        id: doc.id,
-        createdAt: data.createdAt?.toDate() || new Date(),
-        updatedAt: data.updatedAt?.toDate() || new Date(),
-      } as Order);
+      if (data) {
+        orders.push({
+          ...data,
+          id: doc.id,
+          createdAt: data.createdAt?.toDate() || new Date(),
+          updatedAt: data.updatedAt?.toDate() || new Date(),
+        } as unknown as Order);
+      }
     });
     callback(orders);
   });
@@ -172,10 +177,13 @@ export const subscribeToMenuItems = (callback: (menuItems: MenuItem[]) => void) 
   return onSnapshot(menuRef, (snapshot) => {
     const menuItems: MenuItem[] = [];
     snapshot.forEach((doc) => {
-      const data = doc.data() as MenuItem;
-      // Filter available items on client side
-      if (data.available) {
-        menuItems.push({ ...data, id: doc.id });
+      const data = doc.data();
+      if (data) {
+        const menuItem = data as unknown as MenuItem;
+        // Filter available items on client side
+        if (menuItem.available) {
+          menuItems.push({ ...menuItem, id: doc.id });
+        }
       }
     });
     // Sort by name on client side
@@ -229,7 +237,10 @@ export const subscribeToAllMenuItems = (callback: (menuItems: MenuItem[]) => voi
   return onSnapshot(menuRef, (snapshot) => {
     const menuItems: MenuItem[] = [];
     snapshot.forEach((doc) => {
-      menuItems.push({ ...doc.data(), id: doc.id } as MenuItem);
+      const data = doc.data();
+      if (data) {
+        menuItems.push({ ...data, id: doc.id } as unknown as MenuItem);
+      }
     });
     // Sort by name on client side
     menuItems.sort((a, b) => a.name.localeCompare(b.name));
@@ -280,7 +291,10 @@ export const subscribeToOrderItems = (orderId: string, callback: (items: OrderIt
   return onSnapshot(q, (snapshot) => {
     const items: OrderItem[] = [];
     snapshot.forEach((doc) => {
-      items.push({ ...doc.data(), id: doc.id } as OrderItem);
+      const data = doc.data();
+      if (data) {
+        items.push({ ...data, id: doc.id } as unknown as OrderItem);
+      }
     });
     callback(items);
   });
