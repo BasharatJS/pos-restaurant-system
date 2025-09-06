@@ -62,7 +62,7 @@ export default function LandingPage() {
             <PricingSection />
             <DemoSection />
             <ContactSection />
-            {/* <Footer /> */}
+            <Footer />
           </motion.div>
         )}
       </AnimatePresence>

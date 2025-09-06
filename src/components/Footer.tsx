@@ -389,7 +389,7 @@ export default function Footer() {
       </div>
 
       {/* Animated Background Elements */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+      {/* <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" /> */}
       
       {/* Floating Animation Elements */}
       <motion.div
