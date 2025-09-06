@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-green: #22c55e;
+  --primary-yellow: #eab308;
+  --primary-orange: #f97316;
+  --primary-blue: #3b82f6;
+  --dark-bg: #1a1a1a;
+  --light-gray: #f8f9fa;
 }
 
 @theme inline {
@@ -10,17 +16,78 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary-green: var(--primary-green);
+  --color-primary-yellow: var(--primary-yellow);
+  --color-primary-orange: var(--primary-orange);
+  --color-primary-blue: var(--primary-blue);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Fix input placeholder and text colors */
+input[type="email"], 
+input[type="password"], 
+input[type="text"] {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="text"]::placeholder {
+  color: #6b7280 !important;
+  opacity: 1 !important;
+}
+
+/* Fix label colors */
+label {
+  color: #374151 !important;
+}
+
+/* Fix button text colors */
+button {
+  font-weight: 600;
+}
+
+/* Fix sidebar text colors */
+.sidebar-text {
+  color: #374151 !important;
+}
+
+/* Fix menu item text */
+.menu-item-text {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Fix table status colors */
+.table-available {
+  background-color: var(--primary-green) !important;
+}
+
+.table-occupied {
+  background-color: var(--primary-yellow) !important;
+}
+
+.table-reserved {
+  background-color: var(--primary-blue) !important;
+}
+
+/* Light background for table grid area */
+.table-grid-container {
+  background-color: #f9fafb !important;
+  min-height: 100vh !important;
+}
+
+/* Light background for dashboard areas */
+.dashboard-light-bg {
+  background-color: #f9fafb !important;
+}
+
+.dashboard-light-bg .table-title {
+  color: #1f2937 !important;
 }
