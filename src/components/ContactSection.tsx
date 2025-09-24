@@ -5,14 +5,13 @@ import { useState } from 'react';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
-    restaurantName: '',
-    yourName: '',
+    guestName: '',
     email: '',
     phone: '',
-    restaurantType: '',
-    numTables: '',
-    challenges: '',
+    partySize: '',
+    preferredDate: '',
     preferredTime: '',
+    specialRequests: '',
     message: ''
   });
 
@@ -41,10 +40,10 @@ export default function ContactSection() {
   };
 
   const contactInfo = [
-    { icon: '📧', label: 'Email', value: 'evonnexis@gmail.com', href: 'mailto:evonnexis@gmail.com' },
-    { icon: '📞', label: 'Phone', value: '+91-8697805501', href: 'tel:+918697805501' },
-    { icon: '💬', label: 'WhatsApp', value: '+91-8697805501', href: 'https://wa.me/918697805501' },
-    { icon: '🏢', label: 'Address', value: '106, PB Ghat Road, Kamarhati, Kolkata - 58', href: null }
+    { icon: '📧', label: 'Email', value: 'info@spicegarden.com', href: 'mailto:info@spicegarden.com' },
+    { icon: '📞', label: 'Reservations', value: '+91-9876543210', href: 'tel:+919876543210' },
+    { icon: '💬', label: 'WhatsApp Orders', value: '+91-9876543211', href: 'https://wa.me/919876543211' },
+    { icon: '🏢', label: 'Address', value: 'MG Road, Connaught Place, New Delhi - 110001', href: null }
   ];
 
   const supportOptions = [
@@ -128,13 +127,13 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Get{' '}
-            <span className="text-blue-600">In</span>{' '}
-            <span className="text-green-600">Touch</span>
+            Visit{' '}
+            <span className="text-green-600">Spice Garden</span>{' '}
+            <span className="text-yellow-500">Restaurant</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to transform your restaurant? Let's discuss how our POS system 
-            can revolutionize your operations and boost your business.
+            Experience authentic Indian cuisine with modern technology. Book your table
+            or get in touch with us for reservations, feedback, or special events.
           </p>
         </motion.div>
 
@@ -151,41 +150,47 @@ export default function ContactSection() {
               variants={itemVariants}
             >
               <h3 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-                Let's Transform Your{' '}
-                <span className="text-green-600">Restaurant</span>{' '}
-                Together
+                Book Your Table at{' '}
+                <span className="text-green-600">Spice Garden</span>{' '}
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <motion.div variants={itemVariants}>
                     <label className="block text-gray-700 font-semibold mb-2">
-                      Restaurant Name*
+                      Guest Name*
                     </label>
                     <input
                       type="text"
-                      name="restaurantName"
-                      value={formData.restaurantName}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
-                      placeholder="Your restaurant name"
-                    />
-                  </motion.div>
-
-                  <motion.div variants={itemVariants}>
-                    <label className="block text-gray-700 font-semibold mb-2">
-                      Your Name*
-                    </label>
-                    <input
-                      type="text"
-                      name="yourName"
-                      value={formData.yourName}
+                      name="guestName"
+                      value={formData.guestName}
                       onChange={handleInputChange}
                       required
                       className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
                       placeholder="Your full name"
                     />
+                  </motion.div>
+
+                  <motion.div variants={itemVariants}>
+                    <label className="block text-gray-700 font-semibold mb-2">
+                      Party Size*
+                    </label>
+                    <select
+                      name="partySize"
+                      value={formData.partySize}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
+                    >
+                      <option value="">Select party size</option>
+                      <option value="1">1 Guest</option>
+                      <option value="2">2 Guests</option>
+                      <option value="3">3 Guests</option>
+                      <option value="4">4 Guests</option>
+                      <option value="5">5 Guests</option>
+                      <option value="6">6 Guests</option>
+                      <option value="7+">7+ Guests</option>
+                    </select>
                   </motion.div>
                 </div>
 
@@ -224,81 +229,53 @@ export default function ContactSection() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <motion.div variants={itemVariants}>
                     <label className="block text-gray-700 font-semibold mb-2">
-                      Restaurant Type
+                      Preferred Date*
                     </label>
-                    <select
-                      name="restaurantType"
-                      value={formData.restaurantType}
+                    <input
+                      type="date"
+                      name="preferredDate"
+                      value={formData.preferredDate}
                       onChange={handleInputChange}
+                      required
                       className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
-                    >
-                      <option value="">Select type</option>
-                      <option value="qsr">QSR (Quick Service)</option>
-                      <option value="casual">Casual Dining</option>
-                      <option value="fine">Fine Dining</option>
-                      <option value="cloud">Cloud Kitchen</option>
-                    </select>
+                    />
                   </motion.div>
 
                   <motion.div variants={itemVariants}>
                     <label className="block text-gray-700 font-semibold mb-2">
-                      Number of Tables*
+                      Preferred Time*
                     </label>
-                    <input
-                      type="number"
-                      name="numTables"
-                      value={formData.numTables}
+                    <select
+                      name="preferredTime"
+                      value={formData.preferredTime}
                       onChange={handleInputChange}
                       required
-                      min="1"
                       className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
-                      placeholder="e.g., 15"
-                    />
+                    >
+                      <option value="">Select time slot</option>
+                      <option value="12:00 PM">12:00 PM - Lunch</option>
+                      <option value="1:00 PM">1:00 PM - Lunch</option>
+                      <option value="2:00 PM">2:00 PM - Lunch</option>
+                      <option value="7:00 PM">7:00 PM - Dinner</option>
+                      <option value="8:00 PM">8:00 PM - Dinner</option>
+                      <option value="9:00 PM">9:00 PM - Dinner</option>
+                    </select>
                   </motion.div>
                 </div>
 
                 <motion.div variants={itemVariants}>
                   <label className="block text-gray-700 font-semibold mb-2">
-                    Current Challenges
+                    Special Requests or Dietary Preferences
                   </label>
                   <textarea
-                    name="challenges"
-                    value={formData.challenges}
+                    name="specialRequests"
+                    value={formData.specialRequests}
                     onChange={handleInputChange}
                     rows={4}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
-                    placeholder="Tell us about your current operational challenges..."
+                    placeholder="Any allergies, dietary preferences, or special occasion details..."
                   />
                 </motion.div>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <motion.div variants={itemVariants}>
-                    <label className="block text-gray-700 font-semibold mb-2">
-                      Preferred Demo Time
-                    </label>
-                    <input
-                      type="datetime-local"
-                      name="preferredTime"
-                      value={formData.preferredTime}
-                      onChange={handleInputChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
-                    />
-                  </motion.div>
-
-                  <motion.div variants={itemVariants}>
-                    <label className="block text-gray-700 font-semibold mb-2">
-                      Additional Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={3}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
-                      placeholder="Any specific requirements or questions?"
-                    />
-                  </motion.div>
-                </div>
 
                 <motion.button
                   type="submit"
@@ -307,7 +284,7 @@ export default function ContactSection() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Send Message 🚀
+Reserve Table 🍽️
                 </motion.button>
               </form>
             </motion.div>

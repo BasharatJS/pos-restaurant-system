@@ -31,7 +31,6 @@ export default function Footer() {
   const quickLinks = [
     { name: 'Home', href: '#home' },
     { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
     { name: 'Demo', href: '#demo' },
     { name: 'Contact', href: '#contact' }
   ];
@@ -110,9 +109,9 @@ export default function Footer() {
               transition={{ duration: 0.3 }}
             >
               <div className="flex items-center space-x-2">
-                <motion.div 
+                <motion.div
                   className="text-4xl font-bold text-green-400"
-                  animate={{ 
+                  animate={{
                     color: ['#4ade80', '#60a5fa', '#c084fc', '#4ade80'],
                     textShadow: [
                       '0 0 10px rgba(74, 222, 128, 0.5)',
@@ -121,33 +120,33 @@ export default function Footer() {
                       '0 0 10px rgba(74, 222, 128, 0.5)'
                     ]
                   }}
-                  transition={{ 
-                    duration: 5, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
                   }}
                 >
-                  Evon
+                  Spice
                 </motion.div>
-                <motion.div 
-                  className="text-4xl font-bold text-blue-400"
-                  animate={{ 
-                    color: ['#60a5fa', '#4ade80', '#fbbf24', '#60a5fa'],
+                <motion.div
+                  className="text-4xl font-bold text-yellow-400"
+                  animate={{
+                    color: ['#fbbf24', '#4ade80', '#60a5fa', '#fbbf24'],
                     textShadow: [
-                      '0 0 10px rgba(96, 165, 250, 0.5)',
+                      '0 0 10px rgba(251, 191, 36, 0.5)',
                       '0 0 15px rgba(74, 222, 128, 0.5)',
-                      '0 0 15px rgba(251, 191, 36, 0.5)',
-                      '0 0 10px rgba(96, 165, 250, 0.5)'
+                      '0 0 15px rgba(96, 165, 250, 0.5)',
+                      '0 0 10px rgba(251, 191, 36, 0.5)'
                     ]
                   }}
-                  transition={{ 
-                    duration: 5, 
-                    repeat: Infinity, 
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
                     ease: "easeInOut",
-                    delay: 1.5 
+                    delay: 1.5
                   }}
                 >
-                  POS
+                  Garden
                 </motion.div>
               </div>
               <motion.div 
@@ -168,18 +167,17 @@ export default function Footer() {
             </motion.div>
             
             <p className="text-gray-300 mb-6 text-lg leading-relaxed max-w-md">
-              Transform your restaurant operations with our smart POS technology. 
-              Streamline orders, manage tables, and boost efficiency with our 
-              all-in-one restaurant management system.
+              Experience authentic Indian cuisine with modern technology at Spice Garden Restaurant.
+              Serving traditional recipes with contemporary dining excellence since 2018.
             </p>
 
             {/* Newsletter Signup */}
             <div className="mb-8">
               <h4 className="text-xl font-bold mb-4 text-green-400">
-                📧 Stay Updated
+                📧 Special Offers & Updates
               </h4>
               <p className="text-gray-300 mb-4">
-                Get the latest updates on new features and restaurant tips.
+                Subscribe to receive exclusive offers, seasonal menus, and event updates.
               </p>
               
               <form onSubmit={handleNewsletterSubmit} className="flex gap-3">
@@ -257,18 +255,18 @@ export default function Footer() {
               </h4>
               <ul className="space-y-3">
                 <motion.li whileHover={{ x: 5 }}>
-                  <a href="mailto:evonnexis@gmail.com" className="text-gray-300 hover:text-green-400 transition-colors">
-                    📧 Help Center
+                  <a href="mailto:info@spicegarden.com" className="text-gray-300 hover:text-green-400 transition-colors">
+                    📧 Email Us
                   </a>
                 </motion.li>
                 <motion.li whileHover={{ x: 5 }}>
-                  <a href="tel:+918697805501" className="text-gray-300 hover:text-green-400 transition-colors">
-                    📞 Contact Support
+                  <a href="tel:+919876543210" className="text-gray-300 hover:text-green-400 transition-colors">
+                    📞 Reservations
                   </a>
                 </motion.li>
                 <motion.li whileHover={{ x: 5 }}>
-                  <a href="https://wa.me/918697805501" className="text-gray-300 hover:text-green-400 transition-colors">
-                    💬 Live Chat
+                  <a href="https://wa.me/919876543211" className="text-gray-300 hover:text-green-400 transition-colors">
+                    💬 WhatsApp Orders
                   </a>
                 </motion.li>
               </ul>
@@ -340,19 +338,10 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-gray-400 text-center md:text-left">
               <p className="mb-2">
-                © 2024 POS Restaurant System. All rights reserved.
+                © 2024 Spice Garden Restaurant. All rights reserved.
               </p>
               <p className="text-sm">
-                Powered by{' '}
-                <motion.a
-                  href="https://www.evonnexis.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-400 hover:text-green-300 font-semibold transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Evonnexis Pvt. Ltd.
-                </motion.a>
+                Serving authentic Indian cuisine • MG Road, Connaught Place, New Delhi
               </p>
             </div>
 

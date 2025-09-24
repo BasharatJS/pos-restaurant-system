@@ -6,19 +6,19 @@ import { motion } from 'framer-motion';
 export default function HeroSection() {
   const benefits = [
     {
-      icon: '🚀',
-      title: 'Faster Service',
-      description: 'Reduce order processing time by 60%'
+      icon: '🍽️',
+      title: 'Authentic Indian Cuisine',
+      description: 'Traditional recipes with modern dining experience'
     },
     {
-      icon: '📊',
-      title: 'Real-time Insights',
-      description: 'Track sales, inventory, and performance instantly'
+      icon: '⚡',
+      title: 'Lightning Fast Service',
+      description: 'Digital ordering ensures your meal arrives quickly'
     },
     {
-      icon: '👥',
-      title: 'Team Collaboration',
-      description: 'Seamless coordination between waiters, kitchen, and management'
+      icon: '👨‍🍳',
+      title: 'Expert Culinary Team',
+      description: 'Professional chefs creating memorable dining experiences'
     }
   ];
 
@@ -59,11 +59,11 @@ export default function HeroSection() {
             className="text-5xl md:text-7xl font-bold text-gray-800 mb-6 leading-tight"
             variants={itemVariants}
           >
-            Transform Your{' '}
-            <span className="text-green-600">Restaurant</span>{' '}
-            Operations with{' '}
-            <span className="text-yellow-500">Smart POS</span>{' '}
-            Technology
+            Welcome to{' '}
+            <span className="text-green-600">Spice Garden</span>{' '}
+            Restaurant's{' '}
+            <span className="text-yellow-500">Digital</span>{' '}
+            Experience
           </motion.h1>
 
           {/* Subheadline */}
@@ -71,8 +71,8 @@ export default function HeroSection() {
             className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
             variants={itemVariants}
           >
-            Streamline orders, manage tables, and boost efficiency with our 
-            all-in-one restaurant management system
+            Experience seamless dining with our state-of-the-art POS system.
+            From table selection to order completion - everything made simple for our valued guests and efficient staff.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -85,14 +85,14 @@ export default function HeroSection() {
               whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(34, 197, 94, 0.3)' }}
               whileTap={{ scale: 0.95 }}
             >
-              Start Free Trial
+              Book a Table
             </motion.button>
             <motion.button
               className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 hover:text-white transition-all shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Watch Demo
+              View Menu
             </motion.button>
           </motion.div>
         </motion.div>
@@ -134,9 +134,9 @@ export default function HeroSection() {
             className="text-2xl font-bold text-gray-800 mb-6"
             variants={itemVariants}
           >
-            Trusted by 500+ restaurants across India
+            Loved by customers since 2018 • Serving authentic flavors in the heart of the city
           </motion.h3>
-          
+
           <motion.div
             className="flex justify-center items-center space-x-2 text-yellow-400 text-2xl mb-4"
             variants={itemVariants}
@@ -152,12 +152,12 @@ export default function HeroSection() {
               </motion.span>
             ))}
           </motion.div>
-          
+
           <motion.p
             className="text-xl text-gray-700 font-semibold"
             variants={itemVariants}
           >
-            4.8/5 rating from restaurant owners
+            4.9/5 rating from 2,500+ satisfied customers
           </motion.p>
         </motion.div>
       </div>

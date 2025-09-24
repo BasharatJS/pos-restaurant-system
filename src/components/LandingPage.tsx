@@ -5,7 +5,6 @@ import Header from './Header';
 import HeroSection from './HeroSection';
 import ProblemSolutionSection from './ProblemSolutionSection';
 import FeaturesSection from './FeaturesSection';
-import PricingSection from './PricingSection';
 import DemoSection from './DemoSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
@@ -59,7 +58,6 @@ export default function LandingPage() {
             <HeroSection />
             <ProblemSolutionSection />
             <FeaturesSection />
-            <PricingSection />
             <DemoSection />
             <ContactSection />
             <Footer />

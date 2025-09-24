@@ -10,7 +10,7 @@ interface HeaderProps {
 export default function Header({ onLoginClick }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems = ['Home', 'Features', 'Pricing', 'Demo', 'Contact'];
+  const navItems = ['Home', 'Features', 'Demo', 'Contact'];
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId.toLowerCase());
@@ -35,40 +35,40 @@ export default function Header({ onLoginClick }: HeaderProps) {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="flex items-center space-x-1">
-              <motion.div 
+            <div className="flex items-center space-x-2">
+              <motion.div
                 className="text-3xl font-bold text-green-600"
-                animate={{ 
+                animate={{
                   color: ['#059669', '#0ea5e9', '#8b5cf6', '#059669'],
                 }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
                 }}
               >
-                Evon
+                Spice
               </motion.div>
-              <motion.div 
-                className="text-3xl font-bold text-blue-600"
-                animate={{ 
-                  color: ['#2563eb', '#059669', '#f59e0b', '#2563eb'],
+              <motion.div
+                className="text-3xl font-bold text-yellow-500"
+                animate={{
+                  color: ['#eab308', '#059669', '#f59e0b', '#eab308'],
                 }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
                   ease: "easeInOut",
-                  delay: 1 
+                  delay: 1
                 }}
               >
-                POS
+                Garden
               </motion.div>
             </div>
-            <motion.div 
+            <motion.div
               className="text-sm font-medium text-gray-600 -mt-1"
-              whileHover={{ 
+              whileHover={{
                 color: '#059669',
-                scale: 1.05 
+                scale: 1.05
               }}
               transition={{ duration: 0.3 }}
             >

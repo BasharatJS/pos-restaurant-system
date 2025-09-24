@@ -36,29 +36,29 @@ export default function FeaturesSection() {
 
   const roleFeatures = {
     waiters: [
-      { icon: '📱', title: 'Digital Table Management', description: 'Visual table layout with real-time status' },
-      { icon: '🍽️', title: 'Smart Menu System', description: 'Categorized menu with search and filtering' },
-      { icon: '📝', title: 'Quick Order Taking', description: 'One-tap item selection with quantity controls' },
-      { icon: '🧾', title: 'Instant KOT Generation', description: 'Digital kitchen order tickets' },
-      { icon: '💬', title: 'Customer Notes', description: 'Special instructions and preferences' }
+      { icon: '🪑', title: 'Visual Table Layout', description: 'Interactive 24-table floor plan with live status updates' },
+      { icon: '🍛', title: 'Spice Garden Menu', description: 'Categorized Indian cuisine menu with instant access' },
+      { icon: '⚡', title: 'Lightning Order Entry', description: 'One-touch ordering system for faster service' },
+      { icon: '🧾', title: 'Kitchen Order Tickets', description: 'Instant KOT transmission to our kitchen display' },
+      { icon: '🌶️', title: 'Spice Level Notes', description: 'Customer preferences for spice levels and special requests' }
     ],
     kitchen: [
-      { icon: '📋', title: 'Digital KOT Display', description: 'Clear order details with timing' },
-      { icon: '⏰', title: 'Order Queue Management', description: 'Priority-based order processing' },
-      { icon: '✅', title: 'Order Status Updates', description: 'Mark orders as preparing/ready/served' },
-      { icon: '📊', title: 'Preparation Time Tracking', description: 'Monitor kitchen efficiency' }
+      { icon: '👨‍🍳', title: 'Chef Display System', description: 'Live order queue with cooking instructions and spice levels' },
+      { icon: '🔥', title: 'Recipe Management', description: 'Traditional Spice Garden recipes with cooking times' },
+      { icon: '✅', title: 'Order Completion', description: 'Mark dishes ready and notify service staff instantly' },
+      { icon: '⏱️', title: 'Kitchen Efficiency', description: 'Track preparation times for consistent quality' }
     ],
     managers: [
-      { icon: '📈', title: 'Sales Analytics', description: 'Real-time revenue and performance metrics' },
-      { icon: '👥', title: 'Staff Management', description: 'Track waiter performance and shifts' },
-      { icon: '📦', title: 'Inventory Tracking', description: 'Monitor stock levels and alerts' },
-      { icon: '🎯', title: 'Menu Optimization', description: 'Popular items and profit analysis' }
+      { icon: '📊', title: 'Restaurant Analytics', description: 'Daily sales, peak hours, and customer flow patterns' },
+      { icon: '👨‍💼', title: 'Team Performance', description: 'Monitor service staff efficiency and customer satisfaction' },
+      { icon: '🍽️', title: 'Menu Analysis', description: 'Most popular dishes and revenue per item tracking' },
+      { icon: '🏆', title: 'Quality Control', description: 'Kitchen timing and order accuracy monitoring' }
     ],
     admins: [
-      { icon: '🏢', title: 'Multi-location Management', description: 'Centralized control across branches' },
-      { icon: '💰', title: 'Financial Reports', description: 'Comprehensive business insights' },
-      { icon: '👤', title: 'User Management', description: 'Role-based access control' },
-      { icon: '⚙️', title: 'System Configuration', description: 'Customize settings and workflows' }
+      { icon: '🏬', title: 'Complete Restaurant Control', description: 'Full system oversight and management capabilities' },
+      { icon: '💰', title: 'Business Intelligence', description: 'Comprehensive financial reports and growth analytics' },
+      { icon: '👥', title: 'Staff Administration', description: 'User roles, permissions, and access control' },
+      { icon: '🍛', title: 'Menu Management', description: 'Add, edit, and update Spice Garden\'s menu items and prices' }
     ]
   };
 
@@ -79,10 +79,10 @@ export default function FeaturesSection() {
   ];
 
   const tabs = [
-    { id: 'waiters', label: 'For Waiters', color: 'text-green-600 border-green-600' },
-    { id: 'kitchen', label: 'Kitchen Staff', color: 'text-orange-600 border-orange-600' },
-    { id: 'managers', label: 'Managers', color: 'text-blue-600 border-blue-600' },
-    { id: 'admins', label: 'Admins', color: 'text-purple-600 border-purple-600' }
+    { id: 'waiters', label: 'Service Staff', color: 'text-green-600 border-green-600' },
+    { id: 'kitchen', label: 'Kitchen Team', color: 'text-orange-600 border-orange-600' },
+    { id: 'managers', label: 'Floor Managers', color: 'text-blue-600 border-blue-600' },
+    { id: 'admins', label: 'Restaurant Admin', color: 'text-purple-600 border-purple-600' }
   ];
 
   return (
@@ -96,14 +96,14 @@ export default function FeaturesSection() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Powerful{' '}
-            <span className="text-green-600">Features</span>{' '}
-            for Every{' '}
-            <span className="text-yellow-500">Team Member</span>
+            Experience{' '}
+            <span className="text-green-600">Spice Garden's</span>{' '}
+            Advanced{' '}
+            <span className="text-yellow-500">Digital Features</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From waiters to managers, our POS system empowers every role 
-            with specialized tools designed for maximum efficiency.
+            Our restaurant operates with cutting-edge technology, ensuring every member
+            of our team delivers exceptional service with specialized digital tools.
           </p>
         </motion.div>
 
@@ -176,7 +176,7 @@ export default function FeaturesSection() {
             className="text-3xl font-bold text-center text-gray-800 mb-8"
             variants={itemVariants}
           >
-            Technical Excellence
+            Why Our Technology Stands Out
           </motion.h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
@@ -216,7 +216,7 @@ export default function FeaturesSection() {
             className="text-3xl font-bold text-center text-gray-800 mb-8"
             variants={itemVariants}
           >
-            Seamless Integrations
+            Complete Business Integration
           </motion.h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
@@ -261,7 +261,7 @@ export default function FeaturesSection() {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            Explore All Features
+Discover Our Restaurant Technology
           </motion.button>
         </motion.div>
       </div>

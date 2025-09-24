@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import { useOrders } from '@/context/OrderContext';
 import { Table, MenuItem, OrderItem, Order, MenuCategory } from '@/types';
 import { 
   subscribeToTables, 
@@ -358,6 +359,7 @@ const KOTModal = ({
 
 export default function WaiterDashboard() {
   const { user, logout } = useAuth();
+  const { addOrder } = useOrders();
   const [selectedTable, setSelectedTable] = useState<Table | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<MenuCategory>('all');
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
@@ -538,15 +540,63 @@ export default function WaiterDashboard() {
     alert(`KOT ${kotNumber} sent to kitchen printer successfully! 🖨️`);
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (!selectedTable || !user || orderItems.length === 0) return;
 
+    console.log('🔵 CHECKOUT STARTED - Waiter Dashboard');
+    console.log('🔵 Selected table:', selectedTable);
+    console.log('🔵 User:', user);
+    console.log('🔵 Order items:', orderItems);
+
     const total = orderItems.reduce((sum, item) => sum + item.total, 0);
-    console.log('Order completed:', { tableId: selectedTable.id, items: orderItems, total });
-    
+
+    // Convert OrderItem[] to the format expected by OrderContext
+    const orderItemsForContext = orderItems.map(item => ({
+      id: item.id,
+      menuItem: item.menuItem, // Use the correct menuItem structure
+      quantity: item.quantity,
+      total: item.total,
+      notes: item.notes
+    }));
+
+    console.log('🔵 Order items for context:', orderItemsForContext);
+    console.log('🔵 Total amount:', total);
+
+    // Add order to global context for manager dashboard and Firebase
+    const orderId = await addOrder({
+      tableNumber: selectedTable.number,
+      waiterName: user.name || 'Unknown Waiter',
+      waiterId: user.uid || 'unknown',
+      items: orderItemsForContext,
+      total: total,
+      status: 'served', // Changed from 'completed' to 'served' to show payment button
+      notes: 'Order served and ready for payment',
+      paymentMethod: undefined // Remove default payment method until actually paid
+    });
+
+    console.log('🔵 ORDER SENT TO CONTEXT with ID:', orderId);
+
+    // Verify localStorage was updated
+    setTimeout(() => {
+      const storedOrders = localStorage.getItem('restaurant-orders');
+      console.log('🔵 VERIFICATION: localStorage after addOrder:', storedOrders);
+      if (storedOrders) {
+        const parsed = JSON.parse(storedOrders);
+        console.log('🔵 VERIFICATION: Parsed orders count:', parsed.length);
+        console.log('🔵 VERIFICATION: Latest order:', parsed[0]);
+      }
+    }, 100);
+
+    console.log('Order completed and sent to manager dashboard:', {
+      orderId,
+      tableId: selectedTable.id,
+      items: orderItems,
+      total
+    });
+
     // Update table status back to available
-    setTables(prevTables => 
-      prevTables.map(t => 
+    setTables(prevTables =>
+      prevTables.map(t =>
         t.id === selectedTable.id ? { ...t, status: 'available' as const } : t
       )
     );
@@ -559,7 +609,7 @@ export default function WaiterDashboard() {
     });
     setOrderItems([]);
     setSelectedTable(null);
-    alert('Order completed successfully!');
+    alert(`Order ${orderId} completed successfully! 🎉\nOrder details sent to Manager Dashboard.`);
   };
 
   if (isInitializing) {

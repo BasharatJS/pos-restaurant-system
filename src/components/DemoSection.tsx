@@ -3,6 +3,28 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
+const getFeatureIcon = (feature: string, demoType: string) => {
+  const iconMap: Record<string, string> = {
+    'Table Layout View': '🪑',
+    'Quick Order Entry': '⚡',
+    'Real-time Status': '🔄',
+    'Customer Notes': '📝',
+    'Sales Dashboard': '📊',
+    'Staff Performance': '👥',
+    'Inventory Tracking': '📦',
+    'Revenue Reports': '💰',
+    'Multi-location Control': '🏢',
+    'User Management': '👤',
+    'System Settings': '⚙️',
+    'Financial Reports': '💹',
+    'Live Order Queue': '📋',
+    'Recipe Management': '👨‍🍳',
+    'Order Status Updates': '✅',
+    'Preparation Time Tracking': '⏱️'
+  };
+  return iconMap[feature] || '🍽️';
+};
+
 export default function DemoSection() {
   const [activeDemo, setActiveDemo] = useState('waiter');
   const [activeScenario, setActiveScenario] = useState(0);
@@ -119,13 +141,14 @@ export default function DemoSection() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Experience Our{' '}
-            <span className="text-blue-600">Interactive</span>{' '}
-            <span className="text-green-600">Demo</span>
+            See Our{' '}
+            <span className="text-green-600">Digital Kitchen</span>{' '}
+            in{' '}
+            <span className="text-yellow-500">Action</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Don't just read about it - try it! Explore our live demo to see 
-            how our POS system transforms restaurant operations.
+            Witness how Spice Garden revolutionized restaurant operations with smart technology.
+            Experience our digital workflow and see why customers love dining with us.
           </p>
         </motion.div>
 
@@ -149,23 +172,58 @@ export default function DemoSection() {
               <motion.div
                 key={demo.id}
                 variants={itemVariants}
-                className={`bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all cursor-pointer border-2 ${
-                  activeDemo === demo.id ? 'border-blue-500 ring-2 ring-blue-200' : 'border-transparent'
+                className={`bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer border-2 relative overflow-hidden ${
+                  activeDemo === demo.id
+                    ? 'border-blue-500 ring-4 ring-blue-200 shadow-2xl scale-105'
+                    : 'border-gray-200 hover:border-gray-300'
                 }`}
-                whileHover={{ y: -10, scale: 1.02 }}
+                whileHover={{ y: -10, scale: activeDemo === demo.id ? 1.05 : 1.02 }}
                 onClick={() => setActiveDemo(demo.id)}
               >
-                <div className="text-center">
-                  <div className="text-5xl mb-4">{demo.icon}</div>
-                  <h4 className="text-xl font-bold text-gray-800 mb-3">{demo.title}</h4>
-                  <p className="text-gray-600 mb-6">{demo.description}</p>
-                  
+                {/* Selected indicator */}
+                {activeDemo === demo.id && (
+                  <motion.div
+                    className="absolute top-4 right-4 bg-blue-500 text-white rounded-full p-2"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    ✓
+                  </motion.div>
+                )}
+
+                {/* Background decoration */}
+                <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${demo.color} opacity-10 rounded-full -mr-12 -mt-12`} />
+
+                <div className="text-center relative">
+                  <motion.div
+                    className="text-6xl mb-6"
+                    animate={{
+                      rotateY: activeDemo === demo.id ? [0, 360] : 0,
+                      scale: activeDemo === demo.id ? [1, 1.1, 1] : 1
+                    }}
+                    transition={{ duration: 1, repeat: activeDemo === demo.id ? Infinity : 0, repeatDelay: 3 }}
+                  >
+                    {demo.icon}
+                  </motion.div>
+
+                  <h4 className="text-2xl font-bold text-gray-800 mb-4">{demo.title}</h4>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{demo.description}</p>
+
                   <motion.button
-                    className={`w-full py-3 px-6 rounded-full font-semibold text-white bg-gradient-to-r ${demo.color} hover:shadow-lg transition-all`}
+                    className={`w-full py-4 px-6 rounded-full font-bold text-white bg-gradient-to-r ${demo.color} hover:shadow-lg transition-all relative overflow-hidden`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Try {demo.title}
+                    <motion.div
+                      className="absolute inset-0 bg-white opacity-20"
+                      initial={{ x: '-100%' }}
+                      whileHover={{ x: '100%' }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <span className="relative z-10">
+                      {activeDemo === demo.id ? '🔥 Active Preview' : `Try ${demo.title}`}
+                    </span>
                   </motion.button>
                 </div>
               </motion.div>
@@ -175,30 +233,119 @@ export default function DemoSection() {
           {/* Active Demo Preview */}
           <motion.div
             key={activeDemo}
-            className="bg-white rounded-2xl p-8 shadow-xl max-w-4xl mx-auto"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-2xl max-w-6xl mx-auto border border-gray-200"
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <div className="text-center mb-8">
-              <h4 className="text-2xl font-bold text-gray-800 mb-4">
+              <motion.h4
+                className="text-3xl font-bold text-gray-800 mb-2"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
                 {demoOptions.find(d => d.id === activeDemo)?.preview.title}
-              </h4>
-              <div className="bg-gray-100 rounded-xl p-6 min-h-[200px] flex items-center justify-center">
-                <div className="grid grid-cols-2 gap-4 w-full max-w-md">
+              </motion.h4>
+              <motion.p
+                className="text-gray-600 mb-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                Interactive preview of our restaurant management system
+              </motion.p>
+
+              {/* Enhanced Dashboard Preview */}
+              <div className="bg-gradient-to-br from-gray-900 to-gray-700 rounded-xl p-6 min-h-[400px] shadow-inner relative overflow-hidden">
+                {/* Mock Browser Header */}
+                <div className="flex items-center space-x-2 mb-4 pb-3 border-b border-gray-600">
+                  <div className="flex space-x-1">
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  </div>
+                  <div className="flex-1 bg-gray-600 rounded-full px-4 py-1 text-xs text-gray-300 text-left">
+                    spicegarden-pos.com/{activeDemo}-dashboard
+                  </div>
+                </div>
+
+                {/* Dashboard Content */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                   {demoOptions.find(d => d.id === activeDemo)?.preview.features.map((feature, idx) => (
                     <motion.div
                       key={idx}
-                      className="bg-white rounded-lg p-4 shadow-md text-center"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: idx * 0.1 }}
+                      className="bg-gradient-to-br from-white to-gray-100 rounded-lg p-6 shadow-lg text-center border-l-4 border-green-500 hover:scale-105 transition-transform"
+                      initial={{ opacity: 0, y: 30, rotateX: -15 }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                      transition={{ delay: idx * 0.15 + 0.4, duration: 0.6 }}
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                        borderLeftColor: "#f59e0b"
+                      }}
                     >
-                      <div className="text-sm font-semibold text-gray-700">{feature}</div>
+                      <motion.div
+                        className="text-2xl mb-3"
+                        animate={{ rotate: [0, 5, -5, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: idx * 0.5 }}
+                      >
+                        {getFeatureIcon(feature, activeDemo)}
+                      </motion.div>
+                      <div className="text-sm font-bold text-gray-800 mb-2">{feature}</div>
+                      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-green-500 to-blue-500"
+                          initial={{ width: 0 }}
+                          animate={{ width: '100%' }}
+                          transition={{ delay: idx * 0.2 + 0.8, duration: 1 }}
+                        />
+                      </div>
                     </motion.div>
                   ))}
                 </div>
+
+                {/* Live Activity Indicators */}
+                <div className="absolute top-4 right-4 flex space-x-2">
+                  <motion.div
+                    className="w-3 h-3 bg-green-400 rounded-full"
+                    animate={{ opacity: [1, 0.3, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <motion.div
+                    className="w-3 h-3 bg-blue-400 rounded-full"
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.7 }}
+                  />
+                  <motion.div
+                    className="w-3 h-3 bg-yellow-400 rounded-full"
+                    animate={{ opacity: [1, 0.3, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 1.4 }}
+                  />
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute bottom-4 left-4 text-xs text-gray-400">
+                  🔄 Live Data • Real-time Updates
+                </div>
+                <div className="absolute bottom-4 right-4 text-xs text-gray-400">
+                  👥 {Math.floor(Math.random() * 15) + 5} Active Users
+                </div>
               </div>
+
+              {/* Action Button */}
+              <motion.button
+                className={`mt-6 px-8 py-3 rounded-full font-bold text-white bg-gradient-to-r ${
+                  demoOptions.find(d => d.id === activeDemo)?.color
+                } hover:shadow-lg transition-all`}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 }}
+              >
+                🚀 Try Interactive Demo
+              </motion.button>
             </div>
           </motion.div>
         </motion.div>

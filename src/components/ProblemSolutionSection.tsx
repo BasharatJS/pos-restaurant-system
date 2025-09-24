@@ -5,47 +5,47 @@ import { motion } from 'framer-motion';
 export default function ProblemSolutionSection() {
   const problems = [
     {
-      icon: '❌',
-      title: 'Manual Order Taking',
-      description: 'Manual order taking leads to errors and delays'
+      icon: '⏰',
+      title: 'Long Wait Times',
+      description: 'Customers waiting too long for orders during peak hours'
     },
     {
-      icon: '📱',
-      title: 'Poor Communication',
-      description: 'Poor communication between staff and kitchen'
+      icon: '📝',
+      title: 'Order Mix-ups',
+      description: 'Miscommunication leading to wrong orders served'
     },
     {
-      icon: '📈',
-      title: 'Tracking Difficulties',
-      description: 'Difficulty tracking sales and inventory'
+      icon: '👥',
+      title: 'Table Management',
+      description: 'Difficulty tracking table availability and status'
     },
     {
-      icon: '😤',
-      title: 'Customer Complaints',
-      description: 'Customer complaints about slow service'
+      icon: '💸',
+      title: 'Revenue Tracking',
+      description: 'Manual billing causing revenue calculation errors'
     }
   ];
 
   const solutions = [
     {
-      icon: '✅',
-      title: 'Digital Menu',
-      description: 'Digital menu with real-time updates'
-    },
-    {
-      icon: '⚡',
-      title: 'Instant Orders',
-      description: 'Instant order transmission to kitchen'
-    },
-    {
-      icon: '📊',
-      title: 'Analytics Dashboard',
-      description: 'Comprehensive analytics dashboard'
+      icon: '🚀',
+      title: 'Smart POS System',
+      description: 'Lightning-fast order processing reducing wait times by 70%'
     },
     {
       icon: '📱',
-      title: 'Mobile Interface',
-      description: 'Mobile-friendly interface for staff'
+      title: 'Digital Order Flow',
+      description: 'Direct kitchen communication eliminating order errors'
+    },
+    {
+      icon: '🪑',
+      title: 'Real-time Table Status',
+      description: 'Visual table management with live availability updates'
+    },
+    {
+      icon: '💰',
+      title: 'Automated Billing',
+      description: 'Accurate revenue tracking with digital receipts and reports'
     }
   ];
 
@@ -82,14 +82,14 @@ export default function ProblemSolutionSection() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            From{' '}
-            <span className="text-red-500">Problems</span>{' '}
-            to{' '}
-            <span className="text-green-600">Solutions</span>
+            Why{' '}
+            <span className="text-green-600">Spice Garden</span>{' '}
+            Chose{' '}
+            <span className="text-yellow-500">Digital Innovation</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We understand the challenges restaurants face every day. 
-            That's why we built a solution that addresses each problem directly.
+            Every great restaurant faces operational challenges. At Spice Garden,
+            we solved them with smart technology that enhances both customer experience and staff efficiency.
           </p>
         </motion.div>
 
@@ -105,7 +105,7 @@ export default function ProblemSolutionSection() {
               className="text-3xl font-bold text-red-600 mb-8 text-center"
               variants={itemVariants}
             >
-              The Problems
+              Before Our Digital Transformation
             </motion.h3>
             
             <div className="space-y-6">
@@ -141,7 +141,7 @@ export default function ProblemSolutionSection() {
               className="text-3xl font-bold text-green-600 mb-8 text-center"
               variants={itemVariants}
             >
-              Our Solutions
+              Our Smart Solutions Today
             </motion.h3>
             
             <div className="space-y-6">
@@ -183,7 +183,7 @@ export default function ProblemSolutionSection() {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            Transform Your Restaurant Today
+Experience Spice Garden's Digital Excellence
           </motion.button>
         </motion.div>
       </div>

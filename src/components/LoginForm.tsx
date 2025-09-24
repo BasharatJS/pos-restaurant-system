@@ -30,8 +30,9 @@ export default function LoginForm() {
     <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-green-50 to-white flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">POS</h1>
-          <h2 className="text-2xl font-semibold text-gray-700">for Restaurant</h2>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">
+            <span className="text-green-600">POS</span> for <span className="text-yellow-500">Restaurant</span>
+          </h1>
           <div className="mt-4 w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
         </div>
 
